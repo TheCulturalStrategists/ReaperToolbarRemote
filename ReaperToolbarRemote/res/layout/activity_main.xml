@@ -1,0 +1,204 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/top_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/zero_pad"
+    android:paddingBottom="@dimen/zero_pad"
+    android:paddingLeft="@dimen/zero_pad"
+    android:paddingRight="@dimen/zero_pad"
+    android:paddingTop="@dimen/zero_pad"
+    tools:context=".MainActivity" >
+
+    <RelativeLayout
+        android:id="@+id/transport_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentStart="false"
+        android:layout_marginLeft="@dimen/zero_pad"
+        android:layout_marginTop="@dimen/zero_pad"
+        android:background="@drawable/transport_bg" >
+
+        <com.example.reapertoolbarremote.gui.OnOffButton
+            android:id="@+id/pause_button"
+            style="@style/TransportButtonTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/translucent_backgound"
+            android:src="@drawable/pause_button"
+            android:tag="@string/t_pause" />
+
+        <com.example.reapertoolbarremote.gui.OnOffButton
+            android:id="@+id/play_button"
+            style="@style/TransportButtonTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/pause_button"
+            android:background="@drawable/translucent_backgound"
+            android:src="@drawable/play_button"
+            android:tag="@string/t_play" />
+
+        <com.example.reapertoolbarremote.gui.OnOffButton
+            android:id="@+id/stop_button"
+            style="@style/TransportButtonTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/play_button"
+            android:background="@drawable/translucent_backgound"
+            android:src="@drawable/stop_button"
+            android:tag="@string/t_stop" />
+
+        <com.example.reapertoolbarremote.gui.OnOffButton
+            android:id="@+id/home_button"
+            style="@style/TransportButtonTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/stop_button"
+            android:background="@drawable/translucent_backgound"
+            android:src="@drawable/home_button"
+            android:tag="@string/action" />
+
+        <com.example.reapertoolbarremote.gui.OnOffButton
+            android:id="@+id/end_button"
+            style="@style/TransportButtonTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@id/pause_button"
+            android:background="@drawable/translucent_backgound"
+            android:src="@drawable/end_button"
+            android:tag="@string/action" />
+
+        <com.example.reapertoolbarremote.gui.OnOffButton
+            android:id="@+id/record_button"
+            style="@style/TransportButtonTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_vertical_margin"
+            android:layout_toRightOf="@id/end_button"
+            android:background="@drawable/translucent_backgound"
+            android:src="@drawable/record_button"
+            android:tag="@string/t_record" />
+
+        <com.example.reapertoolbarremote.gui.OnOffButton
+            android:id="@+id/repeat_button"
+            style="@style/TransportButtonTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_vertical_margin"
+            android:layout_marginRight="@dimen/activity_vertical_margin"
+            android:layout_toRightOf="@id/record_button"
+            android:background="@drawable/translucent_backgound"
+            android:src="@drawable/repeat_button"
+            android:tag="@string/t_repeat" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/toolbar_background"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/transport_bar"
+        android:background="@drawable/toolbar_gradient" >
+
+        <RelativeLayout
+            android:id="@+id/toolbar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/mcp_extmixbg" >
+
+            <TextView
+                android:id="@+id/centerDummy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <com.example.reapertoolbarremote.gui.OnOffButton
+                android:id="@+id/but1"
+                style="@style/ToolbarButtonTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/centerDummy"
+                android:src="@drawable/empty_button" />
+
+            <com.example.reapertoolbarremote.gui.OnOffButton
+                android:id="@+id/but2"
+                style="@style/ToolbarButtonTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/but1"
+                android:src="@drawable/empty_button" />
+
+            <com.example.reapertoolbarremote.gui.OnOffButton
+                android:id="@+id/but3"
+                style="@style/ToolbarButtonTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/centerDummy"
+                android:src="@drawable/empty_button" />
+
+            <com.example.reapertoolbarremote.gui.OnOffButton
+                android:id="@+id/but4"
+                style="@style/ToolbarButtonTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/but3"
+                android:src="@drawable/empty_button" />
+
+            <com.example.reapertoolbarremote.gui.OnOffButton
+                android:id="@+id/but5"
+                style="@style/ToolbarButtonTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/but1"
+                android:layout_toLeftOf="@+id/centerDummy"
+                android:src="@drawable/empty_button" />
+
+            <com.example.reapertoolbarremote.gui.OnOffButton
+                android:id="@+id/but7"
+                style="@style/ToolbarButtonTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/but5"
+                android:layout_toLeftOf="@+id/but4"
+                android:src="@drawable/empty_button" />
+
+            <com.example.reapertoolbarremote.gui.OnOffButton
+                android:id="@+id/but8"
+                style="@style/ToolbarButtonTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/but4"
+                android:layout_below="@+id/but4"
+                android:src="@drawable/empty_button" />
+
+            <com.example.reapertoolbarremote.gui.OnOffButton
+                android:id="@+id/but6"
+                style="@style/ToolbarButtonTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/but1"
+                android:layout_toLeftOf="@+id/but1"
+                android:src="@drawable/empty_button" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/OscMonitor"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="46dp"
+            android:layout_marginTop="41dp"
+            android:text="TextView"
+            android:textSize="@dimen/large_text" />
+      
+    </RelativeLayout>
+
+</RelativeLayout>

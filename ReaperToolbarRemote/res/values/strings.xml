@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ReaperToolbarRemote</string>
+    <string name="action_settings">Settings</string>
+    <string name="t_play">/play</string>
+    <string name="t_stop">/stop</string>
+    <string name="t_pause">/pause</string>
+    <string name="t_end">/end</string>
+    <string name="t_home">/home</string>
+    <string name="t_record">/record</string>
+    <string name="t_repeat">/repeat</string>
+    <string name="action">/action</string>
+    <string name="showPopupMenu">showPopupMenu</string>
+    <string name="popupmenu_ipsettings">setIp</string>
+	
+</resources>
