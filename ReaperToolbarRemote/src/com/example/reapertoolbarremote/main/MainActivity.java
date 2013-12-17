@@ -6,14 +6,9 @@ import java.net.UnknownHostException;
 import java.nio.ByteOrder;
 
 import com.example.reapertoolbarremote.R;
-import com.example.reapertoolbarremote.R.id;
-import com.example.reapertoolbarremote.R.layout;
-import com.example.reapertoolbarremote.R.menu;
 import com.example.reapertoolbarremote.osc.OscServer;
 import com.example.reapertoolbarremote.osc.OscListener;
-import com.illposed.osc.OSCListener;
 import com.illposed.osc.OSCMessage;
-import com.illposed.osc.OSCPortIn;
 
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
@@ -24,8 +19,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
-import android.widget.PopupMenu.OnMenuItemClickListener;
-import android.widget.TextView;
 
 public class MainActivity extends Activity implements OscListener {
 
