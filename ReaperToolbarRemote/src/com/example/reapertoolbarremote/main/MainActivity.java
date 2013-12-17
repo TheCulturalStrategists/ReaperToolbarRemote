@@ -2,7 +2,6 @@ package com.example.reapertoolbarremote.main;
 
 import java.math.BigInteger;
 import java.net.InetAddress;
-import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.nio.ByteOrder;
 
@@ -10,7 +9,7 @@ import com.example.reapertoolbarremote.R;
 import com.example.reapertoolbarremote.R.id;
 import com.example.reapertoolbarremote.R.layout;
 import com.example.reapertoolbarremote.R.menu;
-import com.example.reapertoolbarremote.osc.OscCentral;
+import com.example.reapertoolbarremote.osc.OscServer;
 import com.example.reapertoolbarremote.osc.OscListener;
 import com.illposed.osc.OSCListener;
 import com.illposed.osc.OSCMessage;
@@ -35,6 +34,7 @@ public class MainActivity extends Activity implements OscListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		startOsc();
+		osc.addOscListener(this);
 	}
 	private void startOsc() {
 		// TODO Auto-generated method stub
@@ -132,7 +132,7 @@ public class MainActivity extends Activity implements OscListener {
 		return ipAddressString;
 	}
 
-	private OscCentral osc;
+	private OscServer osc;
 
 	@Override
 	public void messageReceived(OSCMessage oscm) {
