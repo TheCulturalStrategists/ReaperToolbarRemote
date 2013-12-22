@@ -4,11 +4,10 @@ import java.math.BigInteger;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.nio.ByteOrder;
+import java.util.Date;
 
 import com.example.reapertoolbarremote.R;
-import com.example.reapertoolbarremote.osc.OscServer;
-import com.example.reapertoolbarremote.osc.OscListener;
-import com.illposed.osc.OSCMessage;
+import com.illposed.osc.*;
 
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
@@ -20,18 +19,27 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
 
-public class MainActivity extends Activity implements OscListener {
+public class MainActivity extends Activity implements OSCListener {
+
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		startOsc();
-		osc.addOscListener(this);
+		InetAddress addr=null;
+		try {
+			addr = InetAddress.getByName("127.0.0.1");
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		osc = new OSCServer(addr,8015,8016);
+		serverThread = new Thread(osc);
+		serverThread.start();
 	}
-	private void startOsc() {
-		// TODO Auto-generated method stub
-	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -39,43 +47,45 @@ public class MainActivity extends Activity implements OscListener {
 		return true;
 	}
 	public void sendOsc(View view) {
-		osc.sendOsc(view);
+		//osc.sendOsc(view);
 	}
 
 	@Override
 	protected void onDestroy() {
-		osc.closeOscPorts();
+		
 		super.onDestroy();
+		osc.kill();
 	}
 
 	@Override
 	protected void onStop() {
-		osc.stop();
 		super.onStop();
+		osc.stop();
 	}
 
 	@Override
 	protected void onPause() {
-		osc.stop();
 		super.onPause();
+		osc.stop();
 	}
 
 	@Override
 	protected void onStart() {
-		osc.openOscPorts();
 		super.onStart();
+		
+		serverThread.start();
 	}
 
 	@Override
 	protected void onRestart() {
-		osc.start();
 		super.onRestart();
+		serverThread.start();
 	}
 
 	@Override
 	protected void onResume() {
-		osc.start();
 		super.onResume();
+		serverThread.start();
 	}
 
 	public void showPopup(View v) {
@@ -98,7 +108,7 @@ public class MainActivity extends Activity implements OscListener {
 	}
 
 	private void setIp() {
-		String ipNumber = this.wifiIpAddress(this);
+		String ipNumber = wifiIpAddress(this);
 		int fest=0;
 	}
 
@@ -125,11 +135,13 @@ public class MainActivity extends Activity implements OscListener {
 		return ipAddressString;
 	}
 
-	private OscServer osc;
-
+	private OSCServer osc;
+	private Thread serverThread;
 	@Override
-	public void messageReceived(OSCMessage oscm) {
+	public void acceptMessage(Date time, OSCMessage message) {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 }
