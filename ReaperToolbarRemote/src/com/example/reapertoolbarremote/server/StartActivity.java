@@ -3,17 +3,13 @@ package com.example.reapertoolbarremote.server;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
-import java.util.Date;
 
 import com.example.reapertoolbarremote.R;
-import com.example.reapertoolbarremote.R.drawable;
-import com.example.reapertoolbarremote.R.id;
-import com.example.reapertoolbarremote.R.layout;
+
 
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;

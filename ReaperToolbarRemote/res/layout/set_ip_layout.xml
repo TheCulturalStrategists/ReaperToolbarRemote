@@ -8,4 +8,72 @@
     android:paddingTop="0dp"
     tools:context=".MainActivity" >
 
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="35dp"
+        android:text="IP Number"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/ipNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_alignTop="@+id/textView1"
+        android:layout_marginLeft="64dp"
+        android:layout_toRightOf="@+id/textView1"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/outPortNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ipNumber"
+        android:layout_below="@+id/ipNumber"
+        android:layout_marginTop="52dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/TextView02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignTop="@+id/outPortNumber"
+        android:text="Out port number"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/TextView03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView02"
+        android:layout_below="@+id/TextView02"
+        android:layout_marginTop="34dp"
+        android:text="In port number"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/inportNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/TextView03"
+        android:layout_alignBottom="@+id/TextView03"
+        android:layout_alignLeft="@+id/outPortNumber"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/inportNumber"
+        android:layout_below="@+id/TextView03"
+        android:layout_marginTop="50dp"
+        android:onClick="@string/set_ip_number_done"
+        android:text="Done" />
+
 </RelativeLayout>

@@ -7,6 +7,7 @@ import java.nio.ByteOrder;
 import java.util.Date;
 
 import com.example.reapertoolbarremote.R;
+import com.example.reapertoolbarremote.gui.OnOffButton;
 import com.illposed.osc.*;
 
 import android.net.wifi.WifiManager;
@@ -18,6 +19,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 
 public class MainActivity extends Activity implements OSCListener {
 
@@ -29,13 +31,19 @@ public class MainActivity extends Activity implements OSCListener {
 		setContentView(R.layout.activity_main);
 		InetAddress addr=null;
 		try {
-			addr = InetAddress.getByName("127.0.0.1");
+			addr = InetAddress.getByName(ipNumber);
 		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		osc = new OSCServer(addr,8015,8016);
+		
+		createAndStartServer(addr);
+		setButtonProperties();
+	}
+
+	private void createAndStartServer(InetAddress addr) {
+		osc = new OSCServer(addr,outPort,inPort);
+		
 		serverThread = new Thread(osc);
 		serverThread.start();
 	}
@@ -47,7 +55,8 @@ public class MainActivity extends Activity implements OSCListener {
 		return true;
 	}
 	public void sendOsc(View view) {
-		//osc.sendOsc(view);
+		OnOffButton button = (OnOffButton) view;
+		osc.sendOsc(button.getOscPacket());
 	}
 
 	@Override
@@ -73,19 +82,19 @@ public class MainActivity extends Activity implements OSCListener {
 	protected void onStart() {
 		super.onStart();
 		
-		serverThread.start();
+//		serverThread.start();
 	}
 
 	@Override
 	protected void onRestart() {
 		super.onRestart();
-		serverThread.start();
+//		serverThread.start();
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
-		serverThread.start();
+//		serverThread.start();
 	}
 
 	public void showPopup(View v) {
@@ -108,8 +117,19 @@ public class MainActivity extends Activity implements OSCListener {
 	}
 
 	private void setIp() {
-		String ipNumber = wifiIpAddress(this);
-		int fest=0;
+		setContentView(R.layout.set_ip_layout);
+//		ipNumber = wifiIpAddress(this);
+		TextView ip = (TextView) findViewById(R.id.ipNumber);
+		ip.setText(ipNumber);
+		TextView outport = (TextView) findViewById(R.id.outPortNumber);
+		outport.setText(outPort);
+		TextView inport = (TextView) findViewById(R.id.inportNumber);
+		inport.setText(inPort);
+		
+	}
+
+	public void setIpNumberDone(View view){
+		setContentView(R.layout.activity_main);
 	}
 
 	protected String wifiIpAddress(Context context) {
@@ -137,11 +157,18 @@ public class MainActivity extends Activity implements OSCListener {
 
 	private OSCServer osc;
 	private Thread serverThread;
+	private int outPort = 8026;
+	private int inPort = 8025;
+	private String ipNumber = "192.168.0.98";
 	@Override
 	public void acceptMessage(Date time, OSCMessage message) {
 		// TODO Auto-generated method stub
 		
 	}
-
+	private void setButtonProperties(){
+		ButtonFixer fix = new ButtonFixer(this);
+		fix.fixButtons();
+		fix=null;
+	}
 	
 }

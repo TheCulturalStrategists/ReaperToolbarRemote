@@ -53,9 +53,20 @@ public class OnOffButton extends ImageButton implements OSCListener{
 
 
 
-	private boolean isOn=false;
-	private OSCPacket onPacket,offPacket;
+	public OSCPacket getOscPacket() {
+		return oscPacket;
+	}
 
+	public void setOscPacket(OSCPacket oscPacket) {
+		this.oscPacket = oscPacket;
+	}
+
+
+
+
+	private boolean isOn=false;
+	private OSCPacket oscPacket;
+	
 
 
 	@Override

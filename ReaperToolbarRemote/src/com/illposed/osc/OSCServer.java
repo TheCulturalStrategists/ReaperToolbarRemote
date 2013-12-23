@@ -1,5 +1,6 @@
 package com.illposed.osc;
 
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.util.Date;
@@ -37,6 +38,14 @@ public class OSCServer implements Runnable , OSCListener {
 		oscPortIn.stopListening();
 		oscPortIn.close();
 		oscPortOut.close();
+	}
+	public void sendOsc(OSCPacket msg){
+		try {
+			oscPortOut.send(msg);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	private OSCPortOut oscPortOut;
 	private OSCPortIn oscPortIn;

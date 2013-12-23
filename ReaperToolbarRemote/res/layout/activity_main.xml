@@ -120,7 +120,7 @@
                 android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <com.example.reapertoolbarremote.gui.OnOffButton
-                android:id="@+id/but1"
+                android:id="@+id/but2"
                 style="@style/ToolbarButtonTheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -128,11 +128,10 @@
                 android:src="@drawable/empty_button" />
 
             <com.example.reapertoolbarremote.gui.OnOffButton
-                android:id="@+id/but2"
+                android:id="@+id/but1"
                 style="@style/ToolbarButtonTheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toLeftOf="@id/but1"
                 android:src="@drawable/empty_button" />
 
             <com.example.reapertoolbarremote.gui.OnOffButton
@@ -157,7 +156,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/but1"
-                android:layout_toLeftOf="@+id/centerDummy"
+                android:src="@drawable/empty_button" />
+
+            <com.example.reapertoolbarremote.gui.OnOffButton
+                android:id="@+id/but6"
+                style="@style/ToolbarButtonTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/but2"
+                android:layout_toRightOf="@id/but5"
                 android:src="@drawable/empty_button" />
 
             <com.example.reapertoolbarremote.gui.OnOffButton
@@ -176,15 +183,6 @@
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/but4"
                 android:layout_below="@+id/but4"
-                android:src="@drawable/empty_button" />
-
-            <com.example.reapertoolbarremote.gui.OnOffButton
-                android:id="@+id/but6"
-                style="@style/ToolbarButtonTheme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/but1"
-                android:layout_toLeftOf="@+id/but1"
                 android:src="@drawable/empty_button" />
 
         </RelativeLayout>
